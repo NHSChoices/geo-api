@@ -10,5 +10,15 @@ describe Geo::Search do
     it 'returns the request uri stripped of its prefix' do
       expect(search.query).to eq 'stuff'
     end
+
+    it 'returns json content-type' do
+      _, headers, _ = search.response
+      expect(headers.fetch('CONTENT-TYPE')).to eq 'application/json'
+    end
+
+    it 'returns 200 as status' do
+      status, _, _ = search.response
+      expect(status).to eq 200
+    end
   end
 end

@@ -6,11 +6,23 @@ module Geo
     end
 
     def response
-      [200, {}, query]
+      [status, headers, body]
     end
 
     def query
       env['REQUEST_URI'].gsub('/geo/','')
+    end
+
+    def status
+      200
+    end
+
+    def headers
+      { 'CONTENT-TYPE' => 'application/json' }
+    end
+
+    def body
+      query
     end
 
     private
