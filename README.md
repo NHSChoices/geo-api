@@ -6,3 +6,11 @@ geo-api
 [![Coverage Status](https://coveralls.io/repos/NHSChoices/geo-api/badge.png)](https://coveralls.io/r/NHSChoices/geo-api)
 
 Search for postcodes, outcodes and location names.
+
+## Prerequisites ##
+
+* Elastic Search
+
+## Data load
+
+Run `.bin/load.sh` with the extracted place tables in data.

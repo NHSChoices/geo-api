@@ -78,4 +78,3 @@ DEPENDENCIES
   mocha
   rake
   rspec
-  simplecov
