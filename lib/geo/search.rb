@@ -10,7 +10,7 @@ module Geo
     end
 
     def query
-      env['REQUEST_URI'].gsub('/geo/','')
+      env['REQUEST_URI'].gsub('/geo/', '')
     end
 
     def status
