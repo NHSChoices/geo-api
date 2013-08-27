@@ -5,6 +5,9 @@ Bundler.require
 
 require 'goliath/test_helper'
 
+require 'coveralls'
+Coveralls.wear!
+
 Goliath.env = :test
 
 RSpec.configure do |c|

@@ -7,4 +7,5 @@ gem 'em-http-request'
 group :development, :test do
   gem 'rspec'
   gem 'mocha'
+  gem 'coveralls', require: false
 end
