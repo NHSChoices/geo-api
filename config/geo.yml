@@ -1,0 +1,11 @@
+development:
+  elastic_search_domain: "localhost:9200"
+
+test:
+  elastic_search_domain: "localhost:9200"
+
+production:
+  elastic_search_domain: "localhost:9200"
+
+integration:
+  elastic_search_domain: "localhost:9200"

@@ -1,5 +1,5 @@
 module Geo
-  class Search
+  class Request
 
     def initialize(env)
       @env = env
@@ -18,16 +18,19 @@ module Geo
     end
 
     def headers
-      { 'CONTENT-TYPE' => 'application/json' }
+      { 'Content-Type' => 'application/json' }
     end
 
     def body
-      query
+      { matches: matches }
     end
 
     private
 
     attr_reader :env
 
+    def matches
+      Matches.new(query).results
+    end
   end
 end

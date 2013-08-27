@@ -1,31 +1,26 @@
 require 'spec_helper'
-
-require 'goliath'
-require 'geo/search'
-
-class GeoApi < Goliath::API
-  use Goliath::Rack::Heartbeat
-  use Goliath::Rack::Render, 'json'
-
-  def response(env)
-    Geo::Search.new(env).response
-  end
-
-end
+require 'yajl'
+require 'geo_api'
 
 describe GeoApi do
 
-  it 'echoes stuff' do
+  it 'returns a list of match documents' do
     with_api GeoApi do
-      get_request(path: '/geo/stuff') do |request|
-        expect(request.response).to eq 'stuff'
+      get_request(path: '/geo/leed') do |request|
+        response = Yajl::Parser.parse(request.response)
+        match = response.fetch('matches').first
+        expect(match).to have_key('id')
+        expect(match).to have_key('name')
+        expect(match).to have_key('type')
+        expect(match).to have_key('latitude')
+        expect(match).to have_key('longitude')
       end
     end
   end
 
   it 'returns json' do
     with_api GeoApi do
-      get_request(path: '/geo/stuff') do |request|
+      get_request(path: '/geo/leed') do |request|
         content_type = request.response_header['CONTENT_TYPE']
         expect(content_type).to eq 'application/json'
       end
