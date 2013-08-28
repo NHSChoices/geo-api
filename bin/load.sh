@@ -11,7 +11,7 @@ gsub(/_+/, "_", key)
 lat  = $9
 long = $8
 print "{ \"index\" :  { \"_index\" : \"geo\", \"_type\" : \"place\", \"_id\" : \"" key "\" } }\
-{ \"name\" : \"" name "\", \"term\" : \"" name "\", \"latitude\" : "lat", \"longitude\" : " long " }" }' > data/places.json
+{ \"name\" : [\"" name "\"], \"latitude\" : "lat", \"longitude\" : " long " }" }' > data/places.json
 
 curl -s -XPOST localhost:9200/_bulk --data-binary @data/places.json
 
@@ -20,12 +20,12 @@ tail -n +2 data/postcodes.csv |
 name = $1
 key = toupper(name)
 sub(" ", "", key)
-term = name
-gsub(" ", "", term)
+without_spaces = name
+gsub(" ", "", without_spaces)
 lat  = $5
 long = $6
 print "{ \"index\" :  { \"_index\" : \"geo\", \"_type\" : \"postcode\", \"_id\" : \"" key "\" } }\
-{ \"name\" : \"" name "\", \"term\" : \"" term "\", \"latitude\" : "lat", \"longitude\" : " long " }" }' > data/postcodes.json
+{ \"name\" : [\"" name "\", \"" without_spaces "\"], \"latitude\" : "lat", \"longitude\" : " long " }" }' > data/postcodes.json
 
 split -l 200000 data/postcodes.json zz
 
@@ -42,6 +42,6 @@ key = name
 lat  = $3
 long = $4
 print "{ \"index\" :  { \"_index\" : \"geo\", \"_type\" : \"outcode\", \"_id\" : \"" key "\" } }\
-{ \"name\" : \"" name "\", \"term\" : \"" name "\", \"latitude\" : "lat", \"longitude\" : " long " }" }' > data/outcodes.json
+{ \"name\" : [\"" name "\"], \"latitude\" : "lat", \"longitude\" : " long " }" }' > data/outcodes.json
 
 curl -s -XPOST localhost:9200/_bulk --data-binary @data/outcodes.json

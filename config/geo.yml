@@ -1,0 +1,11 @@
+development:
+  elastic_search_domain: "localhost:9200/geo"
+
+test:
+  elastic_search_domain: "localhost:9200/geo_test"
+
+production:
+  elastic_search_domain: "localhost:9200/geo"
+
+integration:
+  elastic_search_domain: "localhost:9200/geo"
