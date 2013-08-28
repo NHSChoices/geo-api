@@ -12,7 +12,7 @@ module Geo
     end
 
     def url
-      "http://#{domain}/geo/_search"
+      "http://#{domain}/_search"
     end
 
     def results

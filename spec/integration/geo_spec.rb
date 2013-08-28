@@ -4,6 +4,10 @@ require 'geo_api'
 
 describe GeoApi do
 
+  before do
+    stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
+  end
+
   it 'returns a list of match documents' do
     with_api GeoApi do
       get_request(path: '/geo/leed') do |request|

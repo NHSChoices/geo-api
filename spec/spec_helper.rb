@@ -5,6 +5,8 @@ Bundler.require
 
 require 'goliath/test_helper'
 
+Goliath.env = :test
+
 require 'geo/configuration'
 require 'geo/matches'
 require 'geo/request'
@@ -22,14 +24,12 @@ SimpleCov.start do
   coverage_dir 'reports/coverage'
 end
 
-Goliath.env = :test
-
-require 'webmock/rspec'
 require 'support/fixtures'
+require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |c|
-  c.include Goliath::TestHelper, example_group: { file_path: /spec\/integration/ }
+  c.include Goliath::TestHelper, example_group: { file_path: /spec/ }
   c.order = :rand
   c.mock_with :mocha
 end

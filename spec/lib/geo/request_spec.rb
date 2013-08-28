@@ -8,7 +8,7 @@ describe Geo::Request do
   describe "#response" do
 
     before do
-      stub_request(:get, /localhost:9200\/geo\/_search/).to_return(Fixtures.matches)
+      stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
     end
 
     it 'has a status code of 200' do

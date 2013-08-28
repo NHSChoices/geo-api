@@ -4,13 +4,13 @@ module Geo
   describe Matches do
 
     before do
-      stub_request(:get, /localhost:9200\/geo\/_search/).to_return(Fixtures.matches)
+      stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
     end
 
     let (:matches) { Matches.new('Lee') }
 
     it 'searches the geo index in elasticsearch' do
-      expect(matches.url).to eq 'http://localhost:9200/geo/_search'
+      expect(matches.url).to eq 'http://localhost:9200/geo_test/_search'
     end
 
     it 'queries elasticsearch for prefix matches' do
