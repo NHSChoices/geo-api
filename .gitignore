@@ -14,3 +14,4 @@ tmp
 /data/*.csv
 /data/*.json
 .DS_Store
+/vendor

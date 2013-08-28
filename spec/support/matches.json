@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Content-Length: 2468
+
+{
+  "took" : 13,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 49,
+    "max_score" : 230.10202,
+    "hits" : [ {
+      "_index" : "geo",
+      "_type" : "postcode",
+      "_id" : "LS116AF",
+      "_score" : 230.10202, "_source" : { "name" : ["LS11 6AF", "LS116AF"], "latitude" : 53.7789916992188, "longitude" : -1.55076897144318 }
+    }, {
+      "_index" : "geo",
+      "_type" : "postcode",
+      "_id" : "LS116DL",
+      "_score" : 230.10202, "_source" : { "name" : ["LS11 6DL", "LS116DL"], "latitude" : 53.7771949768066, "longitude" : -1.55078816413879 }
+    } ]
+  }
+}
