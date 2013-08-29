@@ -7,10 +7,6 @@ describe Geo::Request do
 
   describe "#response" do
 
-    before do
-      stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
-    end
-
     it 'has a status code of 200' do
       expect(search.status).to eq 200
     end
@@ -20,12 +16,32 @@ describe Geo::Request do
     end
 
     it 'returns an array of matches' do
+      stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
       EM.synchrony do
         _, _, body = search.response
         expect(body.fetch(:matches).first).to be_a Hash
         EM.stop
       end
     end
-  end
 
+    it 'returns an array of alternatives if there are no matches' do
+      search.stubs(:matches).returns([])
+      stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.alternatives)
+      EM.synchrony do
+        _, _, body = search.response
+        expect(body.fetch(:alternatives).first).to be_a Hash
+        EM.stop
+      end
+    end
+
+    it 'returns an empty array of alternatives if there are matches' do
+      stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
+      EM.synchrony do
+        _, _, body = search.response
+        expect(body.fetch(:alternatives)).to be_empty
+        EM.stop
+      end
+    end
+
+  end
 end

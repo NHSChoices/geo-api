@@ -1,14 +1,14 @@
 AllCops:
   Includes:
     - Rakefile
-    - config.ru
+    - geo_api.rb
   Excludes:
-    - bootstrap/**
-    - db/**
+    - data/**
     - config/**
-    - script/**
     - features/**
     - spec/**
+    - reports/**
+    - vendor/**
 StringLiterals:
   Enabled: false
 Documentation:

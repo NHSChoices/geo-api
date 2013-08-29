@@ -22,15 +22,19 @@ module Geo
     end
 
     def body
-      { matches: matches }
+      { matches: matches, alternatives: alternatives }
     end
 
     private
 
     attr_reader :env
 
+    def alternatives
+      @alternatives ||= matches.empty? ? Alternatives.new(query).results : []
+    end
+
     def matches
-      Matches.new(query).results
+      @matches ||= Matches.new(query).results
     end
   end
 end

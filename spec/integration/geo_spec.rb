@@ -1,12 +1,6 @@
 require 'spec_helper'
-require 'yajl'
-require 'geo_api'
 
 describe GeoApi do
-
-  before do
-    stub_request(:get, /localhost:9200\/geo_test\/_search/).to_return(Fixtures.matches)
-  end
 
   it 'returns a list of match documents' do
     with_api GeoApi do
@@ -22,7 +16,17 @@ describe GeoApi do
     end
   end
 
-  it 'returns json' do
+  it 'returns a list of alternatives if there are no matches' do
+    with_api GeoApi do
+      get_request(path: '/geo/leads') do |request|
+        response = Yajl::Parser.parse(request.response)
+        expect(response.fetch('matches')).to be_empty
+        expect(response.fetch('alternatives')).to have_at_least(1).item
+      end
+    end
+  end
+
+  it 'returns a content type of json' do
     with_api GeoApi do
       get_request(path: '/geo/leed') do |request|
         content_type = request.response_header['CONTENT_TYPE']

@@ -1,3 +1,4 @@
 language: ruby
+services: elasticsearch
 rvm:
 - 2.0.0
