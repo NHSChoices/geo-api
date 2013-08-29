@@ -8,6 +8,7 @@ gem 'yajl-ruby'
 gem 'yamlig'
 
 group :development, :test do
+  gem 'cucumber'
   gem 'faraday'
   gem 'rubocop'
   gem 'rspec'
