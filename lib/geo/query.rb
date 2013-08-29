@@ -14,7 +14,11 @@ module Geo
     end
 
     def results
-      @results ||= response['hits']['hits'].map(&Extractor)
+      @results ||= hits.map(&Extractor)
+    end
+
+    def hits
+      response.fetch('hits').fetch('hits')
     end
 
     def response
