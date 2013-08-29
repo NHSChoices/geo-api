@@ -7,11 +7,6 @@ require 'goliath/test_helper'
 
 Goliath.env = :test
 
-require 'geo/configuration'
-require 'geo/matches'
-require 'geo/request'
-require 'geo/extractor'
-
 require 'simplecov'
 require 'coveralls'
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
@@ -24,6 +19,8 @@ SimpleCov.start do
   coverage_dir 'reports/coverage'
 end
 
+require 'geo_api'
+
 require 'support/fixtures'
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)
@@ -32,4 +29,6 @@ RSpec.configure do |c|
   c.include Goliath::TestHelper, example_group: { file_path: /spec/ }
   c.order = :rand
   c.mock_with :mocha
+  c.before(:suite) { Fixtures.setup!     }
+  c.after (:suite) { Fixtures.tear_down! }
 end
