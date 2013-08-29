@@ -3,6 +3,8 @@ require 'bundler'
 Bundler.setup
 Bundler.require
 
+require 'cucumber'
+require 'yajl'
 require 'goliath/test_helper'
 
 Goliath.env = :test
@@ -17,14 +19,11 @@ SimpleCov.start do
   coverage_dir 'reports/coverage'
 end
 
-require 'geo_api'
+require './geo_api'
 
-require 'support/fixtures'
-require 'webmock/rspec'
-WebMock.disable_net_connect!(allow_localhost: true)
+require './features/support/fixtures'
 
-RSpec.configure do |c|
-  c.include Goliath::TestHelper, example_group: { file_path: /spec/ }
-  c.order = :rand
-  c.mock_with :mocha
-end
+World(Goliath::TestHelper)
+
+Fixtures.setup!
+at_exit { Fixtures.tear_down! }
