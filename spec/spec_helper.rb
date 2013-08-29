@@ -9,12 +9,11 @@ Goliath.env = :test
 
 require 'simplecov'
 require 'coveralls'
-SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 
 SimpleCov.start do
-  add_filter '/spec'
-  add_filter '/features'
-  coverage_dir 'reports/coverage'
+  add_filter 'vendor'
+  add_filter 'spec'
+  add_filter 'features'
 end
 
 require 'geo_api'
