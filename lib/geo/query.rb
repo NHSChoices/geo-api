@@ -10,7 +10,7 @@ module Geo
     end
 
     def url
-      ENV['SEARCHBOX_URL'] || "http://#{domain}/_search"
+      "#{ENV['SEARCHBOX_URL'] || "http://#{domain}"}/_search"
     end
 
     def results
