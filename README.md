@@ -13,4 +13,4 @@ Search for postcodes, outcodes and location names.
 
 ## Data load
 
-Run `.bin/load.sh` with the extracted place tables in data.
+Run `.bin/load.sh` with the extracted place tables in the data directory.
