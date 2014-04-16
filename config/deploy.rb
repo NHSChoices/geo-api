@@ -37,22 +37,19 @@ namespace :deploy do
   desc 'Install gems using bundler'
   task :bundler do
     on roles(:app), in: :sequence, wait: 5 do
-       # cd to releases dir and install modules using librarian-puppet - this
-       # could be optimised by creating symlinks to it's .tmp / .librarian dir
-       # into shared.
-       execute "cd '#{release_path}' && bundle install"
+       execute "cd '#{release_path}' && source ~/.rbenvrc && bundle install"
     end
   end
 
   desc 'Restart geoapi app'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "god restart geoapi"
+      execute "source ~/.rbenvrc && god restart geoapi"
     end
   end
 
-  before :publishing, :bundler
-  after :publishing, :restart
+  after :'deploy:publishing', :'deploy:bundler'
+  after :'deploy:bundler', :'deploy:restart'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
