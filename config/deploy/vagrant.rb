@@ -5,7 +5,7 @@
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
 
-role :app, %w{geoapi@vagrant-geoapi01}
+role :app, %w{geoapi@vagrant-geoapi01 geoapi@vagrant-geoapi02}
 
 # Extended Server Syntax
 # ======================

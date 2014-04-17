@@ -4,6 +4,7 @@ app_base = '/var/apps/geoapi'
 app_path = "#{app_base}/current"
 pid_file = "#{app_base}/shared/goliath.pid"
 log_file = "#{app_base}/shared/goliath.log"
+sock_file = "#{app_base}/shared/goliath.sock"
 
 God.watch do |w|
   # script that needs to be run to start, stop and restart
@@ -11,7 +12,7 @@ God.watch do |w|
   w.interval      = 60.seconds
   w.keepalive
 
-  w.start         = "cd #{app_path} && #{ruby_path} geo_api.rb -e #{app_env} -p 8080 -P #{pid_file} -d -l #{log_file}" 
+  w.start         = "cd #{app_path} && #{ruby_path} geo_api.rb -e #{app_env} -p 8080 -P #{pid_file} -d -l #{log_file} -S #{sock_file}" 
 
   # QUIT gracefully shuts down workers
   w.stop = "kill -QUIT `cat #{pid_file}`"
