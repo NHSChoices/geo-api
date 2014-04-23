@@ -1,6 +1,5 @@
 module Geo
   class Request
-
     def initialize(env)
       @env = env
     end

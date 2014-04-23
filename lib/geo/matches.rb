@@ -5,6 +5,5 @@ module Geo
     def query
       { 'query' => { 'text_phrase_prefix' => { 'name' => term } } }
     end
-
   end
 end

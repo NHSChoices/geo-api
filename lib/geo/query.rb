@@ -4,7 +4,6 @@ module Geo
   # Classes that include this module must provide a #query method
   ##
   module Query
-
     def initialize(term)
       @term = term
     end
@@ -42,4 +41,3 @@ module Geo
     attr_reader :term
   end
 end
-

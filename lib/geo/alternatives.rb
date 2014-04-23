@@ -11,6 +11,5 @@ module Geo
           'prefix_length' => 2
         } } } }
     end
-
   end
 end
