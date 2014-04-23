@@ -7,10 +7,9 @@ module Geo
         {
           'value' => term,
           'boost' => 1.0,
-          'fuzziness' => 2,
+          'min_similarity' => 0.75,
           'prefix_length' => 2
         } } } }
     end
-
   end
 end
