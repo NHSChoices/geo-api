@@ -36,7 +36,7 @@ module Geo
     private
 
     def domain
-      Configuration.elastic_search_domain
+      'localhost:9200/geo'
     end
 
     attr_reader :term

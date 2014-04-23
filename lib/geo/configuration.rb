@@ -7,6 +7,5 @@ module Geo
     property :elastic_search_domain
 
     path 'config/geo.yml', Goliath.env
-
   end
 end
