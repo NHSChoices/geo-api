@@ -13,4 +13,4 @@ Search for postcodes, outcodes and location names.
 
 ## Data load
 
-Run `.bin/load.sh` with the extracted place tables in data.
+Run `ruby ./bin/load.rb` with the extracted place tables in data.
