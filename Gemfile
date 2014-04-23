@@ -10,7 +10,7 @@ gem 'yamlig'
 group :development, :test do
   gem 'cucumber'
   gem 'faraday'
-  gem 'rubocop'
+  gem 'rubocop', '0.20.1'
   gem 'rspec'
   gem 'mocha'
   gem 'simplecov', require: false

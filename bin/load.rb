@@ -7,7 +7,7 @@ puts '  Done.'
 
 # Places
 print 'Importing places.'
-File.delete('data/places.json') if File.exists?('data/places.json')
+File.delete('data/places.json') if File.exist?('data/places.json')
 places = File.open("data/places.json", "w")
 open("data/places.csv") do |csv|
   csv.each_line do |line|
@@ -25,7 +25,7 @@ puts '  Done.'
 puts ''
 
 print 'Importing postcodes.'
-File.delete('data/postcodes.json') if File.exists?('data/postcodes.json')
+File.delete('data/postcodes.json') if File.exist?('data/postcodes.json')
 postcodes = File.open('data/postcodes.json', "w")
 open('data/postcodes.csv') do |csv|
   csv.each_line do |line|

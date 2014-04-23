@@ -1,8 +1,8 @@
 AllCops:
-  Includes:
+  Include:
     - Rakefile
     - geo_api.rb
-  Excludes:
+  Exclude:
     - data/**
     - config/**
     - features/**
