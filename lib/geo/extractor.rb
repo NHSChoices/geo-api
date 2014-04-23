@@ -1,6 +1,5 @@
 module Geo
   class Extractor
-
     def initialize(result)
       @result = result
     end
@@ -16,7 +15,7 @@ module Geo
     end
 
     def self.to_proc
-      ->(result){ new(result).extracted }
+      ->(result) { new(result).extracted }
     end
 
     private

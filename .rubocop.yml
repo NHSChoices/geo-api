@@ -1,8 +1,8 @@
 AllCops:
-  Includes:
+  Include:
     - Rakefile
     - geo_api.rb
-  Excludes:
+  Exclude:
     - data/**
     - config/**
     - features/**
@@ -15,13 +15,8 @@ Documentation:
   Enabled: false
 Encoding:
   Enabled: false
-ReduceArguments:
-  Enabled: false
 AndOr:
   Enabled: false
 LineLength:
   Enabled: true
-  Max: 80
-# This next bit is TEMPORARY until we can get answer on snakecase params
-SymbolName:
-  Enabled: false
+  Max: 115

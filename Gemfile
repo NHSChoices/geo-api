@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.1'
 
 gem 'goliath'
 gem 'em-http-request'
@@ -11,7 +11,7 @@ gem 'god'
 group :development, :test do
   gem 'cucumber'
   gem 'faraday'
-  gem 'rubocop'
+  gem 'rubocop', '0.20.1'
   gem 'rspec'
   gem 'mocha'
   gem 'simplecov', require: false
