@@ -12,7 +12,7 @@ places = File.open("data/places.json", "w")
 open("data/places.csv") do |csv|
   csv.each_line do |line|
     values = line.split(",")
-    places.puts "#{{ index: { _index: 'geo', _type: 'postcode', _id: "#{values[0]}" } }.to_json}"
+    places.puts "#{{ index: { _index: 'geo', _type: 'place', _id: "#{values[0]}" } }.to_json}"
     places.puts "#{{ name: [values[0], values[12]], latitude: values[4].to_f, longitude: values[5].to_f }.to_json}"
   end
 end
