@@ -10,7 +10,7 @@ module Geo
     end
 
     def query
-      env['REQUEST_URI'].gsub('/geo/', '')
+      env['REQUEST_URI'].split('?').first.gsub('/geo/', '')
     end
 
     def status
@@ -18,7 +18,7 @@ module Geo
     end
 
     def headers
-      { 'Content-Type' => 'application/json' }
+      { 'Content-Type' => 'application/json', 'Access-Control-Allow-Origin' => '*' }
     end
 
     def body
