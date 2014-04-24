@@ -4,7 +4,8 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{buildmonkey@hscds-i-pm01.nhschoices.local}
+
+role :app, %w{geoapi@hscds-i-geo01.nhschoices.local geoapi@hscds-i-geo02.nhschoices.local}
 
 # Extended Server Syntax
 # ======================
