@@ -7,6 +7,7 @@ gem 'rake'
 gem 'yajl-ruby'
 gem 'yamlig'
 gem 'god'
+gem 'capistrano'
 
 group :development, :test do
   gem 'cucumber'
