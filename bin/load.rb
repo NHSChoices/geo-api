@@ -1,5 +1,8 @@
 require 'net/http'
 require 'json'
+require 'uk_postcode'
+
+started = Time.now
 
 print 'Remove existing index.'
 system("curl -XDELETE localhost:9200/geo")
@@ -30,8 +33,9 @@ postcodes = File.open('data/postcodes.json', "w")
 open('data/postcodes.csv') do |csv|
   csv.each_line do |line|
     values = line.split(",")
+    formatted_postcode = UKPostcode.new(values[0]).norm
     postcodes.puts "#{{ index: { _index: 'geo', _type: 'postcode', _id: "#{values[0]}" } }.to_json}"
-    postcodes.puts "#{{ name: [values[0]], latitude: values[1].to_f, longitude: values[2].to_f }.to_json}"
+    postcodes.puts "#{{ name: [formatted_postcode, values[0]], latitude: values[1].to_f, longitude: values[2].to_f, formatted_name: formatted_postcode }.to_json}"
   end
 end
 postcodes.close
@@ -41,9 +45,12 @@ print 'Splitting postcode into bitesize chunks.'
 system("split -l 20000 data/postcodes.json zz")
 puts '  Done.'
 
+total_files = Dir.glob('zz*').select { |f| File.file?(f) }.count
+count = 0
 puts 'Posting postcodes.'
 Dir.glob('zz*') do |f|
-  print "Posting #{f}."
+  count += 1
+  print "Posting #{count} of #{total_files}."
   system("curl -s -XPOST localhost:9200/_bulk --data-binary @#{f} > /dev/null")
   puts '  Done.'
 end
@@ -51,3 +58,8 @@ end
 print 'Cleaning up.'
 system("rm zz*")
 puts '  Done'
+
+puts ''
+total_time = Time.now - started
+mins, seconds = total_time.divmod(60)
+puts "Time taken: #{mins} minutes & #{seconds} seconds."

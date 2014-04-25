@@ -136,6 +136,7 @@ GEM
       atomic
     tins (1.1.0)
     tzinfo (0.3.37)
+    uk_postcode (1.0.0)
     webmock (1.13.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
@@ -161,6 +162,7 @@ DEPENDENCIES
   rspec
   rubocop (= 0.20.1)
   simplecov
+  uk_postcode
   webmock
   yajl-ruby
   yamlig

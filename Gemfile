@@ -8,6 +8,7 @@ gem 'yajl-ruby'
 gem 'yamlig'
 gem 'god'
 gem 'capistrano'
+gem 'uk_postcode'
 
 group :development, :test do
   gem 'cucumber'
