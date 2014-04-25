@@ -6,6 +6,7 @@ gem 'em-http-request'
 gem 'rake'
 gem 'yajl-ruby'
 gem 'yamlig'
+gem 'uk_postcode'
 
 group :development, :test do
   gem 'cucumber'
