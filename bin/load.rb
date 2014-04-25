@@ -16,7 +16,7 @@ open("data/places.csv") do |csv|
   csv.each_line do |line|
     values = line.split(",")
     places.puts "#{{ index: { _index: 'geo', _type: 'place', _id: "#{values[0]}" } }.to_json}"
-    places.puts "#{{ name: [values[0], values[12]], latitude: values[4].to_f, longitude: values[5].to_f }.to_json}"
+    places.puts "#{{ name: [values[0], values[12]], longitude: values[4].to_f, latitude: values[5].to_f }.to_json}"
   end
 end
 places.close
@@ -35,7 +35,7 @@ open('data/postcodes.csv') do |csv|
     values = line.split(",")
     formatted_postcode = UKPostcode.new(values[0]).norm
     postcodes.puts "#{{ index: { _index: 'geo', _type: 'postcode', _id: "#{values[0]}" } }.to_json}"
-    postcodes.puts "#{{ name: [formatted_postcode, values[0]], latitude: values[1].to_f, longitude: values[2].to_f, formatted_name: formatted_postcode }.to_json}"
+    postcodes.puts "#{{ name: [formatted_postcode, values[0]], longitude: values[1].to_f, latitude: values[2].to_f, formatted_name: formatted_postcode }.to_json}"
   end
 end
 postcodes.close
