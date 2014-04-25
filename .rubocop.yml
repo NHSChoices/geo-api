@@ -19,4 +19,4 @@ AndOr:
   Enabled: false
 LineLength:
   Enabled: true
-  Max: 115
+  Max: 165
