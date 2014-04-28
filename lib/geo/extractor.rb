@@ -10,7 +10,7 @@ module Geo
         name: name,
         latitude: source.fetch('latitude'),
         longitude: source.fetch('longitude'),
-        type: result.fetch('_type')
+        type: type
       }
     end
 
@@ -25,7 +25,12 @@ module Geo
     end
 
     def name
+      return source.fetch('name').join(', ') if type == 'place'
       source.fetch('name').first
+    end
+
+    def type
+      result.fetch('_type')
     end
 
     attr_reader :result
