@@ -15,7 +15,7 @@ places = File.open("data/places.json", "w")
 open("data/places.csv") do |csv|
   csv.each_line do |line|
     values = line.split(",")
-    places.puts "#{{ index: { _index: 'geo', _type: 'place', _id: "#{values[0]}" } }.to_json}"
+    places.puts "#{{ index: { _index: 'geo', _type: 'place', _id: "#{values[0]}, #{values[12]}" } }.to_json}"
     places.puts "#{{ name: [values[0], values[12]], longitude: values[4].to_f, latitude: values[5].to_f }.to_json}"
   end
 end
@@ -42,7 +42,7 @@ postcodes.close
 puts '  Done.'
 
 print 'Splitting postcode into bitesize chunks.'
-system("split -l 20000 data/postcodes.json zz")
+system("split -l 50000 data/postcodes.json zz")
 puts '  Done.'
 
 total_files = Dir.glob('zz*').select { |f| File.file?(f) }.count
