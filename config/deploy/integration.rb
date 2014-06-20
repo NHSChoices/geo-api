@@ -1,2 +1,2 @@
-server 'cbeta-i-wa01.nhschoices.local', user: 'geoapi', roles: %w{app}
+server 'cplus-i-api01.nhschoices.local', user: 'geoapi', roles: %w{app}
 
