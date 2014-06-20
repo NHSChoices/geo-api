@@ -13,8 +13,8 @@ gem 'uk_postcode'
 group :development, :test do
   gem 'cucumber'
   gem 'faraday'
-  gem 'rubocop', '0.20.1'
-  gem 'rspec'
+  gem 'rubocop'
+  gem 'rspec', '~> 2.14.0'
   gem 'mocha'
   gem 'simplecov', require: false
   gem 'coveralls', require: false
