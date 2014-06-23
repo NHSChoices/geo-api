@@ -15,11 +15,11 @@ Search for postcodes, outcodes and location names.
 
 Run `ruby ./bin/load.rb` with the extracted place tables in data.
 
-### Environments 
+## Environments 
 
-## Integration
+### Integration
    [http://cplus-i-api.cloudapp.net/geo/ls1](http://cplus-i-api.cloudapp.net/geo/ls1)
-## Staging
+### Staging
    [http://cplus-s-api.cloudapp.net/geo/ls1](http://cplus-s-api.cloudapp.net/geo/ls1)
-## Production
+### Production
    [http://cplus-p-api.cloudapp.net/geo/ls1](http://cplus-p-api.cloudapp.net/geo/ls1)
